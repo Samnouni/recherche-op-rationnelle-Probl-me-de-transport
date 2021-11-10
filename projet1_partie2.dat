@@ -1,0 +1,30 @@
+set USINES := Liv Bri ;
+set DEPOTS := Lon Exe New Bir Bris Nor ;
+set CLIENTS := C1 C2 C3 C4 C5 C6 ;
+# L’ensembles des routes
+set ROUTES := (Liv,New) (Liv,Bir) (Liv,Lon) (Liv,Exe) (Liv,C1) (Liv,C3)
+(Liv,C4) (Liv,C6) (Bri,Bir) (Bri,Lon) (Bri,Exe) (Bri,C1) (New,C2)
+(New,C3) (New,C4) (New,C6) (Bir,C1) (Bir,C2) (Bir,C3) (Bir,C4)
+(Bir,C5) (Lon,C2) (Lon,C3) (Lon,C5) (Lon,C6) (Exe,C3) (Exe,C4)
+(Exe,C5) (Exe,C6) (Nor,C2) (Nor,C4) (Nor,C5) (Nor,C6) (Bris,C1)
+(Bris,C2) (Bris,C3) (Bris,C5) (Bris,C6) (Liv,Bris) (Liv,Nor)
+(Bri,Bris) (Bri,Nor) ;
+# Les couts unitaires de la distribution livres/t
+param cout_unitaire :=Liv New 0.5 Liv Bir 0.5 Liv Lon 1 Liv Exe 0.2 Liv
+C1 1 Liv C3 1.5 Liv C4 2 Liv C6 1 Bri Bir 0.3 Bri Lon 0.5 Bri Exe 0.2
+Bri C1 2 New C2 1.5 New C3 0.5 New C4 1.5 New C6 1 Bir C1 1 Bir C2 0.5
+Bir C3 0.5 Bir C4 1 Bir C5 0.5 Lon C2 1.5 Lon C3 2 Lon C5 0.5 Lon C6
+1.5 Exe C3 0.2 Exe C4 1.5 Exe C5 0.5 Exe C6 1.5 Liv Bris 0.6 Liv Nor
+0.4 Bri Bris 0.4 Bri Nor 0.3 Bris C1 1.2 Bris C2 0.6 Bris C3 0.5 Bris
+C5 0.3 Bris C6 0.8 Nor C2 0.4 Nor C4 0.5 Nor C5 0.6 Nor C6 0.9 ;
+# Les capacites de production des usines
+param cap_usines := Liv 150 Bri 200 ;
+# Les capacites initiales des depots
+param cap_depots := New 70 Bir 50 Lon 100 Exe 40 Bris 0 Nor 0 ;
+# Augmentation ou diminuation de la capacite des depots en fonction de la
+decision
+param nouvelle_cap_Depots := New -70 Bir 20 Lon 0 Exe -40 Bris 30 Nor 25 ;
+# Les demandes des clients
+param dem_client := C1 50 C2 10 C3 40 C4 35 C5 60 C6 20 ;
+# Les changements financaires en fonction de la decision
+param finances_economies := New -10 Bir 3 Lon 0 Exe -5 Bris 12 Nor 4 ;

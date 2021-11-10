@@ -1,0 +1,22 @@
+set USINES := Liv Bri ;
+set DEPOTS := New Bir Lon Exe ;
+set CLIENTS := C1 C2 C3 C4 C5 C6 ;
+# L’ensemble des routes
+set ROUTES := (Liv,New) (Liv,Bir) (Liv,Lon) (Liv,Exe) (Liv,C1) (Liv,C3)
+(Liv,C4) (Liv,C6) (Bri,Bir) (Bri,Lon) (Bri,Exe) (Bri,C1) (New,C2)
+(New,C3) (New,C4) (New,C6) (Bir,C1) (Bir,C2) (Bir,C3) (Bir,C4)
+(Bir,C5) (Lon,C2) (Lon,C3) (Lon,C5) (Lon,C6) (Exe,C3) (Exe,C4)
+(Exe,C5) (Exe,C6) ;
+# Les couts unitaires de la distribution livres/t
+param cout_unitaire := Liv New 0.5, Liv Bir 0.5, Liv Lon 1.0, Liv Exe
+0.2, Liv C1 1.0, Liv C3 1.5, Liv C4 2.0, Liv C6 1.0, Bri Bir 0.3, Bri
+Lon 0.5, Bri Exe 0.2, Bri C1 2.0, New C2 1.5, New C3 0.5, New C4 1.5,
+New C6 1.0, Bir C1 1.0, Bir C2 0.5, Bir C3 0.5, Bir C4 1.0, Bir C5
+0.5, Lon C2 1.5, Lon C3 2.0, Lon C5 0.5, Lon C6 1.5, Exe
+C3 0.2, Exe C4 1.5, Exe C5 0.5, Exe C6 1.5 ;
+# Les capacites de production des usines
+param cap_usines := Liv 150 Bri 200 ;
+# Les capacites initiales des depots
+param cap_depots := New 70 Bir 50 Lon 100 Exe 40 ;
+# Les demandes des clients
+param dem_client := C1 50 C2 10 C3 40 C4 35 C5 60 C6 20 ;
